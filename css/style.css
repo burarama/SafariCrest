@@ -179,7 +179,7 @@ header {
 
 /* Cards with Faint Premium Shadows */
 .feature-card {
-    background-color: var(--white);
+    background-color: var(--bg-canvas);
     border-radius: 6px;
     overflow: hidden;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03); /* Minimal, clean shadow base */
