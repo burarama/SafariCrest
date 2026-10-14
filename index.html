@@ -8,13 +8,22 @@
 </head>
 <body>
 
-    <!-- Premium Navigation -->
+    <!-- Premium Navigation with Mobile Hamburger Support -->
     <header>
         <nav class="nav-container">
             <div class="logo">
                 <a href="index.html">SAFARI <span>CREST</span></a>
             </div>
-            <ul class="nav-links">
+            
+            <!-- Three Lines Hamburger Button for Small Screens -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="about.html">About Us</a></li>
@@ -23,25 +32,22 @@
         </nav>
     </header>
 
+    <!-- Upgraded Cinematic Hero Section with Video Background -->
+    <section class="hero-section">
+        <video autoplay loop muted playsinline class="hero-video">
+            <source src="images/hero-bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
 
-   <!-- Upgraded Hero Section with Video Background -->
-<section class="hero-section">
-    <!-- The HTML5 Video Element -->
-    <video autoplay loop muted playsinline class="hero-video">
-        <source src="images/hero-bg.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <!-- Content Overlay remains unchanged for perfect text contrast -->
-    <div class="hero-overlay">
-        <div class="hero-text-box">
-            <h1>Experience Kenya, Naturally.</h1>
-            <p>Explore breathtaking landscapes, protect critical wildlife habitats, and support local community livelihoods through genuine, responsible ecotourism.</p>
-            <a href="services.html" class="cta-btn">Explore Our Experiences</a>
+        <div class="hero-overlay">
+            <div class="hero-text-box">
+                <span class="hero-badge">Sustainable Ecotourism</span>
+                <h1>Experience Kenya, Naturally.</h1>
+                <p>Explore breathtaking landscapes, protect critical wildlife habitats, and support local community livelihoods through genuine, responsible ecotourism.</p>
+                <a href="services.html" class="cta-btn">Explore Our Experiences</a>
+            </div>
         </div>
-    </div>
-</section>
-
+    </section>
 
     <!-- Balanced Content Section -->
     <main class="container">
@@ -59,7 +65,7 @@
 
             <!-- Pillar 2 -->
             <article class="feature-card">
-                <img src="images/community.jpeg" alt="Community engagement" class="feature-body-img">
+                <img src="images/community.jpeg" alt="Community engagement" class="feature-img">
                 <div class="feature-body">
                     <h3>Community Alliance</h3>
                     <p>By collaborating directly with families living near conservation areas, we ensure travel revenue builds schools and alternative livelihoods.</p>
@@ -81,6 +87,25 @@
     <footer>
         <p>&copy; 2026 Safari Crest. All Rights Reserved. Protecting Kenya's Natural Heritage.</p>
     </footer>
+
+    <!-- Simple JavaScript for Mobile Navbar Toggle -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu automatically when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 
 </body>
 </html>

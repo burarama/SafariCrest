@@ -9,13 +9,22 @@
 </head>
 <body>
 
-    <!-- Premium Navigation (Synergy with Index Page) -->
+    <!-- Premium Navigation with Mobile Hamburger Support -->
     <header>
         <nav class="nav-container">
             <div class="logo">
                 <a href="index.html">SAFARI <span>CREST</span></a>
             </div>
-            <ul class="nav-links">
+            
+            <!-- Three Lines Hamburger Button for Small Screens -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html" class="active">Services</a></li>
                 <li><a href="about.html">About Us</a></li>
@@ -25,9 +34,10 @@
     </header>
 
     <!-- Upgraded Services Hero Layout -->
-    <section class="hero-section" style="background-image: url('images/hiking.jpg');">
+    <section class="hero-section" style="background-image: url('images/hiking.jpg'); background-size: cover; background-position: center;">
         <div class="hero-overlay">
             <div class="hero-text-box">
+                <span class="hero-badge">Our Offerings</span>
                 <h1>Guided Ecotourism & Adventures</h1>
                 <p>Discover immersion journeys crafted to protect the heartbeat of Kenya’s natural habitats while supporting its communities.</p>
             </div>
@@ -49,18 +59,17 @@
             </article>
 
             <!-- Service 2 -->
-           <article class="feature-card">
-    <!-- Inline video card replacement -->
-    <video autoplay loop muted playsinline class="feature-img">
-        <source src="images/wildlife-bg.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <div class="feature-body">
-        <h3>Ethical Wildlife Excursions</h3>
-        <p>Observe native species inside secure buffer zones surrounding key conservation habitats. Our routes respect wildlife migration lanes, utilize low-emission transport methods, and strictly prioritize the natural peace of the animals.</p>
-    </div>
-</article>
-
+            <article class="feature-card">
+                <!-- Inline video card replacement -->
+                <video autoplay loop muted playsinline class="feature-img">
+                    <source src="images/wildlife-bg.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="feature-body">
+                    <h3>Ethical Wildlife Excursions</h3>
+                    <p>Observe native species inside secure buffer zones surrounding key conservation habitats. Our routes respect wildlife migration lanes, utilize low-emission transport methods, and strictly prioritize the natural peace of the animals.</p>
+                </div>
+            </article>
 
             <!-- Service 3 -->
             <article class="feature-card">
@@ -77,6 +86,25 @@
     <footer>
         <p>&copy; 2026 Safari Crest. All Rights Reserved. Promoting Responsible Ecotourism in Kenya.</p>
     </footer>
+
+    <!-- Simple JavaScript for Mobile Navbar Toggle -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu automatically when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 
 </body>
 </html>

@@ -6,16 +6,43 @@
     <title>About Our Mission - Safari Crest</title>
     <!-- Relative path matches previous pages for flawless folder portability -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specific refinement for About Us content blocks to fix accent border alignment */
+        .story-block {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .story-block.accent-secondary {
+            border-left: 6px solid var(--secondary-color);
+        }
+        .story-block.accent-primary {
+            border-left: 6px solid var(--primary-color);
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Premium Navigation (Consistent Branding) -->
+    <!-- Premium Navigation with Mobile Hamburger Support -->
     <header>
         <nav class="nav-container">
             <div class="logo">
                 <a href="index.html">SAFARI <span>CREST</span></a>
             </div>
-            <ul class="nav-links">
+            
+            <!-- Three Lines Hamburger Button for Small Screens -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="about.html" class="active">About Us</a></li>
@@ -25,9 +52,10 @@
     </header>
 
     <!-- Upgraded About Hero Layout -->
-    <section class="hero-section" style="background-image: url('images/conservation.jpg');">
+    <section class="hero-section" style="background-image: url('images/conservation.jpeg'); background-size: cover; background-position: center;">
         <div class="hero-overlay">
             <div class="hero-text-box">
+                <span class="hero-badge">Our Legacy</span>
                 <h1>Our Mission & Legacy</h1>
                 <p>Rooted in East African soil, we build sustainable frameworks to keep Kenya’s wilderness wild, safe, and beautiful.</p>
             </div>
@@ -38,14 +66,15 @@
     <main class="container">
         <h2 class="section-title">Who We Are</h2>
         
-        <!-- Story block featuring solid informational text -->
-        <div class="info-block" style="background-color: var(--white); padding: 2.5rem; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); border-left: 5px solid var(--secondary-color); margin-bottom: 2.5rem;">
+        <!-- Story block 1 with clean terracotta left accent -->
+        <div class="story-block accent-secondary">
             <h3 style="color: var(--primary-color); margin-bottom: 1rem; font-size: 1.4rem;">The Safari Crest Story</h3>
             <p style="color: #4A554D; font-size: 1rem; margin-bottom: 1rem;">Founded by a collective of Kenyan environmental scientists and indigenous community organizers, Safari Crest emerged to transform typical travel into a powerful tool for conservation. We recognized that the long-term protection of sensitive biodiversity hotspots is only possible when local communities receive direct, tangible benefits from tourism.</p>
             <p style="color: #4A554D; font-size: 1rem;">Today, our operations bridge the gap between high-impact adventure seekers and community-led preservation initiatives, ensuring our footprints serve to protect rather than disrupt.</p>
         </div>
 
-        <div class="info-block" style="background-color: var(--white); padding: 2.5rem; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); border-left: 5px solid var(--primary-color);">
+        <!-- Story block 2 with clean forest green left accent -->
+        <div class="story-block accent-primary">
             <h3 style="color: var(--primary-color); margin-bottom: 1rem; font-size: 1.4rem;">Transformative Environmental Education</h3>
             <p style="color: #4A554D; font-size: 1rem; margin-bottom: 1rem;">We firmly believe that visitors shouldn't just look at nature—they must learn to understand its value. Every single trekking expedition and tracking experience includes immersive, field-based ecological workshops led by certified local environmental guides.</p>
             <p style="color: #4A554D; font-size: 1rem;">Our curricula cover critical topics like indigenous forest preservation, water resource stewardship in arid zones, and peaceful wildlife co-existence frameworks, empowering travelers to carry sustainable habits back to their global homes.</p>
@@ -56,6 +85,25 @@
     <footer>
         <p>&copy; 2026 Safari Crest. All Rights Reserved. Promoting Responsible Ecotourism in Kenya.</p>
     </footer>
+
+    <!-- Simple JavaScript for Mobile Navbar Toggle -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu automatically when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 
 </body>
 </html>

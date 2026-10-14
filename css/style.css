@@ -75,13 +75,35 @@ header {
     color: var(--primary-color);
 }
 
-/* 3. Upgraded Hero Sections with Video Background Capabilities */
+/* Hamburger Menu Toggle Button (Hidden on Desktop) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    transition: var(--transition-smooth);
+}
+
+/* 3. Upgraded Cinematic Hero Section */
 .hero-section {
-    position: relative; /* Essential to anchor absolute child video layers */
-    height: 65vh;
-    min-height: 440px;
-    overflow: hidden; /* Hides video spilling beyond the boundary box */
-    background-color: var(--primary-color); /* Reliable fallback shade */
+    position: relative;
+    height: 75vh;
+    min-height: 520px;
+    overflow: hidden;
+    background-color: var(--primary-color);
 }
 
 .hero-video {
@@ -94,11 +116,16 @@ header {
     height: auto;
     z-index: 1;
     transform: translate(-50%, -50%);
-    object-fit: cover; /* Instructs video to fill space elegantly without crushing aspect ratio */
+    object-fit: cover;
 }
 
+/* Multi-stop gradient overlay for dramatic contrast & professional depth */
 .hero-overlay {
-    background: rgba(28, 46, 33, 0.6); /* Slightly deepened ambient overlay for legible text contrast over video */
+    background: linear-gradient(
+        to bottom,
+        rgba(28, 46, 33, 0.4) 0%,
+        rgba(28, 46, 33, 0.75) 100%
+    );
     position: absolute;
     top: 0;
     left: 0;
@@ -108,31 +135,63 @@ header {
     align-items: center;
     justify-content: center;
     padding: 0 2rem;
-    z-index: 2; /* Ensures text overlay maps safely above video */
+    z-index: 2;
 }
 
 .hero-text-box {
-    max-width: 750px;
+    max-width: 800px;
     text-align: center;
     color: var(--white);
+    animation: heroFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-badge {
+    display: inline-block;
+    background-color: rgba(217, 125, 54, 0.9);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.2rem;
+    backdrop-filter: blur(4px);
 }
 
 .hero-text-box h1 {
-    font-size: 3.2rem;
-    font-weight: 700;
+    font-size: 3.6rem;
+    font-weight: 800;
     margin-bottom: 1.2rem;
-    line-height: 1.2;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 .hero-text-box p {
-    font-size: 1.25rem;
-    margin-bottom: 2.2rem;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
     font-weight: 400;
     opacity: 0.95;
+    line-height: 1.7;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* 4. Action Buttons (Subtle Soft Drop Shadow with Solid Border Framework) */
+/* Smooth Entrance Keyframes */
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 4. Action Buttons */
 .cta-btn {
     display: inline-block;
     background-color: var(--secondary-color);
@@ -140,12 +199,12 @@ header {
     padding: 0.9rem 2.2rem;
     text-decoration: none;
     border-radius: 4px;
-    border: 2px solid var(--secondary-color); /* Clean solid border layout matching preference profiles */
+    border: 2px solid var(--secondary-color);
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.85rem;
     letter-spacing: 1px;
-    box-shadow: 0 3px 8px rgba(217, 125, 54, 0.12); /* Very little, realistic depth shadow */
+    box-shadow: 0 3px 8px rgba(217, 125, 54, 0.12);
     transition: var(--transition-smooth);
 }
 
@@ -177,12 +236,11 @@ header {
     gap: 2.5rem;
 }
 
-/* Cards with Faint Premium Shadows */
 .feature-card {
     background-color: var(--bg-canvas);
     border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03); /* Minimal, clean shadow base */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
     flex: 1 1 calc(33.333% - 2.5rem);
     min-width: 290px;
     display: flex;
@@ -192,7 +250,7 @@ header {
 
 .feature-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(42, 92, 55, 0.05); /* Soft, natural depth adjustment on hover */
+    box-shadow: 0 6px 15px rgba(42, 92, 55, 0.08);
 }
 
 .feature-img {
@@ -205,7 +263,7 @@ header {
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Automatically matches heights across card rows */
+    flex-grow: 1;
 }
 
 .feature-body h3 {
@@ -219,16 +277,7 @@ header {
     color: #4A554D;
 }
 
-/* 6. Information Layout Blocks (About & Contact Pages) */
-.info-block {
-    background-color: var(--white);
-    padding: 2.5rem;
-    border-radius: 6px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02); /* Faint depth box accent */
-    margin-bottom: 2.5rem;
-}
-
-/* 7. Footer Layout Panel */
+/* 6. Footer Layout Panel */
 footer {
     background-color: var(--primary-color);
     color: var(--white);
@@ -239,11 +288,11 @@ footer {
 }
 
 /* ==========================================================================
-   8. Fully Responsive Viewport Media Queries
+   7. Fully Responsive Viewport Media Queries & Mobile Menu Drawer
    ========================================================================== */
 @media (max-width: 900px) {
     .hero-text-box h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
     .hero-text-box p {
         font-size: 1.1rem;
@@ -251,14 +300,57 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .nav-container {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
+    .menu-toggle {
+        display: flex; /* Show three-lines button on mobile */
     }
-    
+
+    .nav-container {
+        padding: 1rem 1.5rem;
+    }
+
+    /* Transform navigation links into a dropdown drawer */
     .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: center;
         gap: 1.5rem;
+        padding: 2rem 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.35s ease-in-out;
+    }
+
+    /* Active class toggled via simple JavaScript */
+    .nav-links.active {
+        max-height: 300px;
+        opacity: 1;
+    }
+
+    /* Animate hamburger to an 'X' shape when active */
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(8.5px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-8.5px) rotate(-45deg);
+    }
+
+    .hero-section {
+        height: 65vh;
+        min-height: 420px;
+    }
+
+    .hero-text-box h1 {
+        font-size: 2.2rem;
     }
 
     .feature-grid {
@@ -269,5 +361,3 @@ footer {
         width: 100%;
     }
 }
-
-

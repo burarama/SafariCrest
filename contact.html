@@ -9,13 +9,22 @@
 </head>
 <body>
 
-    <!-- Premium Navigation Bar (Synergy across all project assets) -->
+    <!-- Premium Navigation with Mobile Hamburger Support -->
     <header>
         <nav class="nav-container">
             <div class="logo">
                 <a href="index.html">SAFARI <span>CREST</span></a>
             </div>
-            <ul class="nav-links">
+            
+            <!-- Three Lines Hamburger Button for Small Screens -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="about.html">About Us</a></li>
@@ -25,9 +34,10 @@
     </header>
 
     <!-- Upgraded Contact Hero Layout -->
-    <section class="hero-section" style="background-image: url('images/hero-home.jpg');">
+    <section class="hero-section" style="background-image: url('images/hero-home.jpg'); background-size: cover; background-position: center;">
         <div class="hero-overlay">
             <div class="hero-text-box">
+                <span class="hero-badge">Get In Touch</span>
                 <h1>Connect With Our Team</h1>
                 <p>Have questions about our eco-tours, community initiatives, or conservation projects? Get in touch with us today.</p>
             </div>
@@ -52,7 +62,7 @@
             <div style="background-color: var(--white); padding: 2.5rem; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); border-top: 4px solid var(--secondary-color);">
                 <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; font-size: 1.4rem;">Send An Inquiry</h3>
                 
-                <!-- Pure HTML Static Form Layout (No active scripts or functionality) -->
+                <!-- Pure HTML Static Form Layout -->
                 <form action="#" method="get" onsubmit="return false;">
                     
                     <div class="form-group" style="margin-bottom: 1.5rem;">
@@ -81,6 +91,25 @@
     <footer>
         <p>&copy; 2026 Safari Crest. All Rights Reserved. Promoting Responsible Ecotourism in Kenya.</p>
     </footer>
+
+    <!-- Simple JavaScript for Mobile Navbar Toggle -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu automatically when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 
 </body>
 </html>
